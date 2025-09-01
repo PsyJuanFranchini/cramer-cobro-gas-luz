@@ -1,0 +1,30 @@
+dias_incluidos_primera_factura = 31
+dias_totales_ciclo = 63
+dias_incluidos_segunda_factura = dias_totales_ciclo - dias_incluidos_primera_factura 
+print(f"dias_incluidos_segunda_factura {dias_incluidos_segunda_factura}")
+ratio_primera_factura = 31/63
+print(f"ratio_primera_factura {ratio_primera_factura}")
+
+ratio_segunda_factura = 1 - ratio_primera_factura
+
+
+
+primer_factura_valor_real = 10731.93
+segunda_factura_valor_real = 11623.97
+
+valor_diario = primer_factura_valor_real / dias_incluidos_primera_factura
+
+segunda_factura_valor_calculado = valor_diario * dias_incluidos_segunda_factura
+print(f"segunda_factura_valor_calculado {segunda_factura_valor_calculado}")
+
+total_calculado = segunda_factura_valor_calculado + primer_factura_valor_real
+print(f"total_calculado {total_calculado}")
+
+total_real = primer_factura_valor_real + segunda_factura_valor_real 
+print(f"total_real {total_real}")
+
+valor_diario_real = total_real / dias_totales_ciclo
+dias_imputados_alquiler = 11
+
+imputado_total = valor_diario_real * dias_imputados_alquiler
+print(imputado_total)
