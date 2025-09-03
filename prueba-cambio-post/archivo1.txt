@@ -1,2 +1,0 @@
-prueba de vim con el texto original para ver si se pierde esto
-no se biencomo se usa esto

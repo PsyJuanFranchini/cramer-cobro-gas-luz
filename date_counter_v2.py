@@ -23,7 +23,7 @@ def prorate_charges(stay_start, stay_end, invoices, is_inclusive, utility_name):
         inv_start = inv['start_date']
         inv_end = inv['end_date']
         
-        # ... (all the calculation logic remains exactly the same) ...
+        # Calculate total days in the invoice period
         invoice_total_days = (inv_end - inv_start).days
         if is_inclusive:
             invoice_total_days += 1
@@ -33,15 +33,16 @@ def prorate_charges(stay_start, stay_end, invoices, is_inclusive, utility_name):
         overlap_start = max(stay_start, inv_start)
         overlap_end = min(stay_end, inv_end)
         
+        # Check if there's an overlap
         if overlap_start <= overlap_end:
-            overlapping_days = (inv_end - inv_start).days
+            # Calculate overlapping days
+            overlapping_days = (overlap_end - overlap_start).days
             if is_inclusive:
                 overlapping_days += 1
 
             charge_for_this_invoice = daily_cost * overlapping_days
             total_charge += charge_for_this_invoice
             
-            # --- THIS IS THE UPDATED PRINT STATEMENT ---
             # Get the ordinal number (e.g., "1st", "2nd")
             ordinal_num = get_ordinal_suffix(i + 1) 
             
