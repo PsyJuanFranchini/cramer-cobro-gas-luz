@@ -1,3 +1,43 @@
+"""
+Prorates light and gas utility bills based on a guest's specific stay period.
+
+This script is designed to accurately calculate the proportional cost of utilities
+owed by a guest. The core purpose is to handle the complex and distinct billing 
+rules for different utility companies.
+
+The primary logic revolves around how the `end_date` on an invoice is interpreted:
+
+  - Gas (Inclusive End Date): The `end_date` represents the **last full day of
+    service**. A bill from `May 13` to `June 11` covers all days up to and
+    including June 11th. The total number of days for this period is
+    calculated as `(end_date - start_date).days + 1`.
+
+  - Light (Exclusive End Date): The `end_date` represents the **boundary** of the
+    service period, not the last day of service. A bill from `May 22` to
+    `July 22` means service stopped *at the beginning* of July 22nd. The last
+    actual day of service was July 21st. The total number of days is
+    calculated as `(end_date - start_date).days`.
+
+This distinction is critical and is handled throughout the script to ensure
+accurate calculations for:
+  1. The total number of days in an invoice (to find the daily rate).
+  2. The precise boundaries of the service period (to find the overlap with the
+     guest's stay). 
+  3. The validation of consecutive invoices.
+
+Key Functions:
+  - prorate_charges: The main calculation engine. It takes a stay period and a
+    list of invoices and returns the total prorated cost.
+  - get_ordinal_suffix: A formatting helper to make the output more readable.
+
+Usage:
+  1. Set the guest's stay period in the `stay_start_guest` and `stay_end_guest`
+     variables.
+  2. Populate the `light_invoices` and `gas_invoices` lists with data from
+     the utility bills.
+  3. Run the script to see a detailed breakdown and the final total owed.
+"""
+
 from datetime import date
 
 def prorate_charges(stay_start, stay_end, invoices, is_inclusive, utility_name):
