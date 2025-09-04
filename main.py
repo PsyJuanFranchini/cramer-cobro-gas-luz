@@ -14,15 +14,14 @@ def main():
 
     # List of all light bill invoices
     light_invoices = [
-        {'start_date': date(2025, 3, 20), 'end_date': date(2025, 5, 22), 'amount': 22355.9},
-        {'start_date': date(2025, 5, 22), 'end_date': date(2025, 7, 22), 'amount': 193879.18},
+        {'start_date': date(2025, 3, 20), 'end_date': date(2025, 5, 22), 'fix_amount': 2_895.62},
+        {'start_date': date(2025, 5, 22), 'end_date': date(2025, 7, 22), 'fix_amount': 34_172.69},
     ]
 
     # List of all gas bill invoices
     gas_invoices = [
-        {'start_date': date(2025, 4, 11 ), 'end_date': date(2025, 5, 12), 'amount': 3621.23},
-        {'start_date': date(2025, 5, 13), 'end_date': date(2025, 6, 11), 'amount': 4284.86},
-        {'start_date': date(2025, 6, 12), 'end_date': date(2025, 7, 11), 'amount': 4219.41},
+        {'start_date': date(2025, 3, 13 ), 'end_date': date(2025, 5, 12), 'fix_amount': 7_245.70},
+        {'start_date': date(2025, 5, 13), 'end_date': date(2025, 7, 11), 'fix_amount': 7_798.86},
     ]
 
     # --- CALCULATION & SUMMARY ---

@@ -23,7 +23,7 @@ def prorate_charges(stay_start, stay_end, invoices, is_inclusive, utility_name):
         stay_start (date): The start date of the stay.
         stay_end (date): The end date of the stay.
         invoices (list): A list of invoice dictionaries. 
-                         Each dict needs 'start_date', 'end_date', and 'amount'.
+                         Each dict needs 'start_date', 'end_date', and 'fix_amount'.
 
     Returns:
         float: The total prorated charge for the given invoices.
@@ -43,7 +43,7 @@ def prorate_charges(stay_start, stay_end, invoices, is_inclusive, utility_name):
         if is_inclusive:
             invoice_total_days += 1
         
-        daily_cost = inv['amount'] / invoice_total_days
+        daily_cost = inv['fix_amount'] / invoice_total_days
         
         overlap_start = max(stay_start, inv_start)
         overlap_end = min(stay_end, inv_end)
